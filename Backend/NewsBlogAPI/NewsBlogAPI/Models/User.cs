@@ -17,5 +17,8 @@ namespace NewsBlogAPI.Models
 
         [Column(TypeName = "nvarchar(255)"),JsonIgnore]
         public string Password { get; set; } = string.Empty;
+
+        [JsonIgnore]
+        public List<NewsPost> newsPosts { get; set; }
     }
 }

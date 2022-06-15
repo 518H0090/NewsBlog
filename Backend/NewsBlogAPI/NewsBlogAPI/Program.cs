@@ -14,6 +14,7 @@ builder.Services.AddSwaggerGen();
 //Add Dependency Injection
 builder.Services.AddScoped<IUserReposotory, UserReposotory>();
 builder.Services.AddScoped<JwtService>();
+builder.Services.AddScoped<INewsRepository, NewsRepository>();
 
 //DBContext
 builder.Services.AddDbContext<DataContext>(options => options.UseSqlServer(

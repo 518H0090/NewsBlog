@@ -75,20 +75,36 @@ namespace NewsBlogAPI.Controllers
         [HttpGet("getAccount")]
         public IActionResult UserLogin()
         {
-            string jwt = Request.Cookies["jwt"];
-
-            var token = _jwtService.Verify(jwt);
-
-            var useId = int.Parse(token.Issuer);
-
-            var userLoginHere = _repository.GetById(useId);
-
-            if (userLoginHere == null)
+            try
             {
-                return BadRequest("Not Found User");
-            }
+                string jwt = Request.Cookies["jwt"];
 
-            return Ok(userLoginHere);
+                var token = _jwtService.Verify(jwt);
+
+                var useId = int.Parse(token.Issuer);
+
+                var userLoginHere = _repository.GetById(useId);
+
+                if (userLoginHere == null)
+                {
+                    return BadRequest("Not Found User");
+                }
+
+                return Ok(userLoginHere);
+            } catch(Exception ex)
+            {
+                return Unauthorized();
+            }
+        }
+
+        [HttpPost("logout")]
+        public IActionResult Logout()
+        {
+            Response.Cookies.Delete("jwt");
+            return Ok(new
+            {
+                message = "success"
+            });
         }
     }
 }

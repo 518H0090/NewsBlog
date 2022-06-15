@@ -11,5 +11,6 @@ namespace NewsBlogAPI.Data
         }
 
         public DbSet<User> users { get; set; }
+        public DbSet<NewsPost> newsPosts { get; set; }
     }
 }
