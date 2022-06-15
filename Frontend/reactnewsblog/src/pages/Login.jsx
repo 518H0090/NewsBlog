@@ -21,7 +21,7 @@ export default function Login() {
             id="floatingInput"
             placeholder="name@example.com"
           />
-          <label for="floatingInput">Email address</label>
+          <label htmlFor="floatingInput">Email address</label>
         </div>
         <div className="form-floating">
           <input
@@ -30,7 +30,7 @@ export default function Login() {
             id="floatingPassword"
             placeholder="Password"
           />
-          <label for="floatingPassword">Password</label>
+          <label htmlFor="floatingPassword">Password</label>
         </div>
 
         <div className="checkbox mb-3">
