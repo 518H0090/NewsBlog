@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import Register from "./pages/Register";
 import Login from "./pages/Login";
 import { useEffect, useState } from "react";
+import CreatePost from "./pages/CreatePost";
+import ViewPost from "./pages/ViewPost.jsx";
 
 function App() {
   const [name, setName] = useState("");
@@ -34,6 +36,8 @@ function App() {
           <Route path="/" element={<Home name={name} />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/createpost" element={<CreatePost />} />
+          <Route path="/viewpost/:postid" element={<ViewPost />} />
         </Routes>
       </BrowserRouter>
     </div>

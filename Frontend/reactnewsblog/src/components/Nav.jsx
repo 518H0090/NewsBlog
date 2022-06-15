@@ -14,6 +14,11 @@ export default function Nav(props) {
 
   let menuDefault = (
     <>
+      <span className="nav-link active" aria-current="page">
+        <Link to="/" style={{ textDecoration: "none" }}>
+          Home
+        </Link>
+      </span>
       <span className="nav-link text-decoration-none">
         <Link to="/login" style={{ textDecoration: "none" }}>
           Login
@@ -28,15 +33,20 @@ export default function Nav(props) {
   );
 
   let menu = (
-    <span className="nav-link text-decoration-none">
-      <Link
-        to="/login"
-        onClick={logoutHandle}
-        style={{ textDecoration: "none" }}
-      >
-        Logout
-      </Link>
-    </span>
+    <>
+      <span className="nav-link active text-success" aria-current="page">
+        {props.name}
+      </span>
+      <span className="nav-link text-decoration-none">
+        <Link
+          to="/login"
+          onClick={logoutHandle}
+          style={{ textDecoration: "none" }}
+        >
+          Logout
+        </Link>
+      </span>
+    </>
   );
 
   let showWith = props.name ? menu : menuDefault;
@@ -62,15 +72,7 @@ export default function Nav(props) {
           className="collapse navbar-collapse me-md-5 d-md-flex justify-content-end"
           id="navbarNavAltMarkup"
         >
-          <div className="navbar-nav">
-            <span className="nav-link active" aria-current="page">
-              <Link to="/" style={{ textDecoration: "none" }}>
-                Home
-              </Link>
-            </span>
-
-            {showWith}
-          </div>
+          <div className="navbar-nav">{showWith}</div>
         </div>
       </div>
     </nav>
