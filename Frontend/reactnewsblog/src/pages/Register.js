@@ -12,17 +12,21 @@ export default function Register() {
   const submitHandle = async (e) => {
     e.preventDefault();
 
-    await fetch("http://localhost:5118/api/User/register", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({
-        name,
-        email,
-        password,
-      }),
-    });
+    if (name === "" || email === "" || password === "") {
+      console.log("Error");
+    } else {
+      await fetch("http://localhost:5118/api/User/register", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name,
+          email,
+          password,
+        }),
+      });
 
-    setSuccess(true);
+      setSuccess(true);
+    }
   };
 
   if (success) {
